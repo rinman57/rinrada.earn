@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "portfolio"
+		},
+		{
+			"path": "laptop_3d"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "portfolio"
+	}
+}
