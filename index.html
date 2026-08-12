@@ -4,22 +4,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> EarnGAPT </title>
+        <link rel="stylesheet" href="https://use.typekit.net/mpw0vht.css">
         <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     </head>
     <body>
 
         <header>
 
             <div class="top-bar">
-                rinrada-earn.me
-                <section class = "top-bar-contents">
-                    <div class= "about-me"> <a href="about.html">about me</a></div>
-                    <div class= "projects"> projects </div>
-                    <div class= "resume"> resume </div>
-                    <div class= "contact"> contact </div>
-                </section>
-                
-                
+                <div class="site-title">rinrada.earn</div>
+                <nav class="top-bar-contents">
+                    <a href="index.html">home</a>
+                    <a href="about.html">about me</a>
+                    <a href="projects.html">projects</a>
+                    <a href="./files/Resume.pdf" target="_blank" rel="noopener noreferrer">resume</a>
+                    <span>contact</span>
+                </nav>
              </div>
 
         </header>
@@ -35,16 +36,24 @@
             
         </section>
 
-        <section class="whoru">
+        <section class="whoru" id="whoru">
             <div class="whoru-text"> 
                 <h1> What do I bring to the table? </h1>
-                <div class="button-container">
-                    <a href="3d_table_website.html">
-                        <button class="cta-button">Let's find out</button>
-                    </a>
+                <p class="whoru-scroll-hint">Let's scroll down to find out</p>
+            </div>
+        </section>
+
+        <section class="table-stage" id="table">
+            <div id="table-container">
+                <div id="item-tooltip" aria-hidden="true"></div>
+                <div id="table-controls">
+                    <button type="button" onclick="resetView()">Reset View</button>
+                    <button type="button" onclick="toggleWireframe()">Toggle Wireframe</button>
                 </div>
-            </div>       
+            </div>
         </section>
 
         <script src="script.js"></script>
-    </body> 
+        <script src="3d-table.js"></script>
+    </body>
+</html>
