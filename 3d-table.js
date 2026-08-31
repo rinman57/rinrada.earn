@@ -1615,7 +1615,7 @@ function addTableItems() {
     resumeGroup.userData = {
         type: 'resume',
         originalY: 1.612,
-        url: './files/Resume.pdf',
+        url: './files/Rinrada_Maneenop_Resume.pdf',
         name: 'Resume',
         openInNewTab: true,
         navLabel: 'Resume'
