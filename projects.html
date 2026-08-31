@@ -10,11 +10,11 @@
 <body class="content-page">
     <header>
         <div class="top-bar">
-            <div class="site-title">rinrada.earn</div>
+            <a href="index.html" class="site-title">rinrada.earn</a>
             <nav class="top-bar-contents">
                 <a href="index.html">home</a>
                 <a href="about.html">about me</a>
-                <a href="projects.html">projects</a>
+                <a href="projects.html" aria-current="page">projects</a>
                 <a href="./files/Resume.pdf" target="_blank" rel="noopener noreferrer">resume</a>
                 <span>contact</span>
             </nav>
@@ -23,64 +23,69 @@
 
     <main class="projects-page">
         <header class="projects-intro">
-            <h1>Projects</h1>
+            <h1>PROJECTS</h1>
             <p>A few things I’ve built, explored, and learned from along the way.</p>
         </header>
 
         <div class="projects-list">
-            <!-- Project 1: replace image src, title, description, and tools -->
+            <!-- Project 1: Japan Travel Data -->
             <article class="project-window">
                 <div class="project-window-image">
-                    <!-- Replace with: <img src="./pictures/your-project.jpg" alt="Project name"> -->
-                    <div class="project-image-placeholder">Add project image</div>
+                    <img src="./pictures/japan-travel-data.png" alt="Japan Travel Data Tableau dashboard">
                 </div>
                 <div class="project-window-body">
-                    <h2 class="project-title">Project Title One</h2>
+                    <h2 class="project-title">Japan Travel Data</h2>
                     <p class="project-description">
-                        Short description of what this project is, what problem it solves, and what you did.
+                        Extracted and analyzed 5+ years of Japan Tourism Statistics using SQL and Excel, building automated Tableau dashboards that surfaced key market KPIs to inform go-to-market strategy for a new eSIM product.
                     </p>
                     <ul class="project-tools">
-                        <li>Python</li>
-                        <li>JavaScript</li>
-                        <li>Figma</li>
-                    </ul>
-                </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project-window">
-                <div class="project-window-image">
-                    <!-- Replace with: <img src="./pictures/your-project.jpg" alt="Project name"> -->
-                    <div class="project-image-placeholder">Add project image</div>
-                </div>
-                <div class="project-window-body">
-                    <h2 class="project-title">Project Title Two</h2>
-                    <p class="project-description">
-                        Short description of what this project is, what problem it solves, and what you did.
-                    </p>
-                    <ul class="project-tools">
-                        <li>React</li>
-                        <li>HTML/CSS</li>
-                        <li>SQL</li>
-                    </ul>
-                </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project-window">
-                <div class="project-window-image">
-                    <!-- Replace with: <img src="./pictures/your-project.jpg" alt="Project name"> -->
-                    <div class="project-image-placeholder">Add project image</div>
-                </div>
-                <div class="project-window-body">
-                    <h2 class="project-title">Project Title Three</h2>
-                    <p class="project-description">
-                        Short description of what this project is, what problem it solves, and what you did.
-                    </p>
-                    <ul class="project-tools">
-                        <li>Three.js</li>
+                        <li>Tableau</li>
+                        <li>Data Visualization</li>
                         <li>Data Analysis</li>
-                        <li>Design</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Project 2: MugenSIM -->
+            <article class="project-window">
+                <div class="project-window-image">
+                    <a href="https://www.mugensim.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="./pictures/mugensim-project.png" alt="MugenSIM — Japan eSIM product">
+                    </a>
+                </div>
+                <div class="project-window-body">
+                    <h2 class="project-title">
+                        <a href="https://www.mugensim.com/" target="_blank" rel="noopener noreferrer">MugenSIM</a>
+                    </h2>
+                    <p class="project-description">
+                        A Japan eSIM brand and website for travelers — native KDDI 5G connectivity with instant setup, unlimited data plans, and a simple buy → install → connect flow. Live at <a href="https://www.mugensim.com/" target="_blank" rel="noopener noreferrer">mugensim.com</a>.
+                    </p>
+                    <ul class="project-tools">
+                        <li>Web Design</li>
+                        <li>Product</li>
+                        <li>eSIM / Travel Tech</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Project 3: Song's Popularity Classification -->
+            <article class="project-window">
+                <div class="project-window-image">
+                    <a href="https://docs.google.com/presentation/d/1egecSCmMgAlOOf-nm5xaF9RNsLUukPhhzeHpV6YHOQk/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <img src="./pictures/dss-song-popularity.png" alt="Song's Popularity Classification title slide">
+                    </a>
+                </div>
+                <div class="project-window-body">
+                    <h2 class="project-title">
+                        <a href="https://docs.google.com/presentation/d/1egecSCmMgAlOOf-nm5xaF9RNsLUukPhhzeHpV6YHOQk/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Song’s Popularity Classification</a>
+                    </h2>
+                    <p class="project-description">
+                        A collaborative Data Science Society project classifying what makes a song popular — presented with Iana P., Elianna G., and Alfredo M. View the slides <a href="https://docs.google.com/presentation/d/1egecSCmMgAlOOf-nm5xaF9RNsLUukPhhzeHpV6YHOQk/edit?usp=sharing" target="_blank" rel="noopener noreferrer">here</a>.
+                    </p>
+                    <ul class="project-tools">
+                        <li>Machine Learning</li>
+                        <li>Data Analysis</li>
+                        <li>Classification</li>
                     </ul>
                 </div>
             </article>

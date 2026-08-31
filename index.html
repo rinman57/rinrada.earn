@@ -13,9 +13,9 @@
         <header>
 
             <div class="top-bar">
-                <div class="site-title">rinrada.earn</div>
+                <a href="index.html" class="site-title">rinrada.earn</a>
                 <nav class="top-bar-contents">
-                    <a href="index.html">home</a>
+                    <a href="index.html" aria-current="page">home</a>
                     <a href="about.html">about me</a>
                     <a href="projects.html">projects</a>
                     <a href="./files/Resume.pdf" target="_blank" rel="noopener noreferrer">resume</a>
@@ -29,6 +29,10 @@
             <div class = "greeting-text"> 
                 <h1> Hello, I'm Rinrada (Earn) </h1>
                 <p> Thank you for taking your time to checkout my website! <br>I hope you enjoy and have fun here while getting to know me. </p>
+                <div class="greeting-actions">
+                    <a href="#timeline" class="greeting-btn">Experience Summary</a>
+                    <a href="#whoru" class="greeting-btn greeting-btn--outline">Playground</a>
+                </div>
             </div>
             <div class = "rinrada-pic">
                 <img src="./pictures/RinradaManeenop.jpg" alt="Rinrada Maneenop">
@@ -46,6 +50,14 @@
         <section class="table-stage" id="table">
             <div id="table-container">
                 <div id="item-tooltip" aria-hidden="true"></div>
+                <aside id="table-nav-sidebar" class="table-nav-sidebar" aria-hidden="true">
+                    <p class="table-nav-sidebar-label">Going to</p>
+                    <ul class="table-nav-sidebar-list">
+                        <li data-nav="Resume"><a href="./files/Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+                        <li data-nav="Projects"><a href="projects.html">Projects</a></li>
+                        <li data-nav="About me"><a href="about.html">About me</a></li>
+                    </ul>
+                </aside>
                 <div id="table-controls">
                     <button type="button" onclick="resetView()">Reset View</button>
                     <button type="button" onclick="toggleWireframe()">Toggle Wireframe</button>
@@ -53,7 +65,73 @@
             </div>
         </section>
 
+        <section class="timeline-section" id="timeline" aria-label="Timeline">
+            <div class="timeline-intro">
+                <h2>TIMELINE</h2>
+                <div class="timeline-rule" aria-hidden="true"></div>
+                <p class="timeline-subtitle">An overview of my college journey</p>
+            </div>
+
+            <div class="timeline-items">
+                <article class="timeline-item">
+                    <div class="timeline-icon" aria-hidden="true">
+                        <span>UC</span>
+                    </div>
+                    <div class="timeline-card">
+                        <p class="timeline-date">Fall 2023</p>
+                        <h3 class="timeline-title">Started Undergraduate Studies</h3>
+                        <p class="timeline-copy">Began studies at UC Berkeley and started exploring design, data, and building things that feel personal.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-icon timeline-icon--amber" aria-hidden="true">
+                        <span>✦</span>
+                    </div>
+                    <div class="timeline-card">
+                        <p class="timeline-date">2024</p>
+                        <h3 class="timeline-title">First Major Projects</h3>
+                        <p class="timeline-copy">Built interactive web experiments and started shaping a portfolio around storytelling and visual design.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-icon timeline-icon--camera" aria-hidden="true">
+                        <span>📷</span>
+                    </div>
+                    <div class="timeline-card">
+                        <p class="timeline-date">2024 – Present</p>
+                        <h3 class="timeline-title">Photography & Creative Work</h3>
+                        <p class="timeline-copy">Grew a creative practice around photography and visual storytelling — now part of how I introduce myself online.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-icon timeline-icon--dark" aria-hidden="true">
+                        <span>3D</span>
+                    </div>
+                    <div class="timeline-card">
+                        <p class="timeline-date">2025</p>
+                        <h3 class="timeline-title">Portfolio Website</h3>
+                        <p class="timeline-copy">Designed and built rinrada.earn — including an interactive 3D table that turns personal interests into a browsable experience.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-icon timeline-icon--accent" aria-hidden="true">
+                        <span>→</span>
+                    </div>
+                    <div class="timeline-card">
+                        <p class="timeline-date">Present</p>
+                        <h3 class="timeline-title">What’s Next</h3>
+                        <p class="timeline-copy">Keep building, learning, and connecting design with technology — update this card with your latest chapter.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <script src="script.js"></script>
         <script src="3d-table.js"></script>
+        <script src="timeline.js"></script>
     </body>
 </html>

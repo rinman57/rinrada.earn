@@ -7,6 +7,8 @@ let tableItems = [];
 let raycaster, mouse;
 let container;
 let itemTooltip;
+let navSidebar;
+let navSidebarItems = [];
 
 const woodTone = { top: 0x8B5E3C, grain: 0x6F4E37, leg: 0x7A5230 };
 const SCENE_SCALE = 3;
@@ -57,6 +59,26 @@ function hideItemTooltip() {
     if (!itemTooltip) return;
     itemTooltip.style.display = 'none';
     itemTooltip.setAttribute('aria-hidden', 'true');
+}
+
+function hideNavSidebar() {
+    if (!navSidebar) return;
+    navSidebar.classList.remove('is-visible');
+    navSidebar.setAttribute('aria-hidden', 'true');
+    navSidebarItems.forEach((item) => item.classList.remove('is-active'));
+}
+
+function showNavSidebar(navLabel) {
+    if (!navSidebar || !navLabel) {
+        hideNavSidebar();
+        return;
+    }
+
+    navSidebarItems.forEach((item) => {
+        item.classList.toggle('is-active', item.dataset.nav === navLabel);
+    });
+    navSidebar.classList.add('is-visible');
+    navSidebar.setAttribute('aria-hidden', 'false');
 }
 
 function showItemTooltip(text, clientX, clientY) {
@@ -344,6 +366,10 @@ function getContainerSize() {
 function init() {
     container = document.getElementById('table-container');
     itemTooltip = document.getElementById('item-tooltip');
+    navSidebar = document.getElementById('table-nav-sidebar');
+    navSidebarItems = navSidebar
+        ? Array.from(navSidebar.querySelectorAll('[data-nav]'))
+        : [];
     if (!container) return;
 
     const { width, height } = getContainerSize();
@@ -1576,7 +1602,8 @@ function addTableItems() {
         type: 'laptop',
         originalY: 1.61,
         url: 'projects.html',
-        name: 'Projects'
+        name: 'Projects',
+        navLabel: 'Projects'
     };
     table.add(laptopGroup);
     tableItems.push(laptopGroup);
@@ -1590,7 +1617,8 @@ function addTableItems() {
         originalY: 1.612,
         url: './files/Resume.pdf',
         name: 'Resume',
-        openInNewTab: true
+        openInNewTab: true,
+        navLabel: 'Resume'
     };
     table.add(resumeGroup);
     tableItems.push(resumeGroup);
@@ -1602,8 +1630,9 @@ function addTableItems() {
     purseGroup.userData = {
         type: 'purse',
         originalY: 1.73,
-        url: '#about',
-        name: 'About Me'
+        url: 'about.html',
+        name: 'About Me',
+        navLabel: 'About me'
     };
     table.add(purseGroup);
     tableItems.push(purseGroup);
@@ -1614,8 +1643,9 @@ function addTableItems() {
     thaiTeaGroup.userData = {
         type: 'thaitea',
         originalY: 1.61,
-        url: '#blog',
-        name: 'Blog'
+        url: 'about.html',
+        name: 'About Me',
+        navLabel: 'About me'
     };
     table.add(thaiTeaGroup);
     tableItems.push(thaiTeaGroup);
@@ -1642,7 +1672,19 @@ function setupEventListeners() {
     canvas.addEventListener('mouseup', onMouseUp, false);
     canvas.addEventListener('wheel', onWheel, false);
     canvas.addEventListener('click', onMouseClick, false);
-    canvas.addEventListener('mouseleave', hideItemTooltip, false);
+    canvas.addEventListener('mouseleave', (event) => {
+        if (navSidebar && navSidebar.contains(event.relatedTarget)) return;
+        hideItemTooltip();
+        hideNavSidebar();
+    }, false);
+
+    if (navSidebar) {
+        navSidebar.addEventListener('mouseleave', (event) => {
+            if (canvas.contains(event.relatedTarget)) return;
+            hideNavSidebar();
+        });
+    }
+
     window.addEventListener('resize', onWindowResize, false);
 }
 
@@ -1666,6 +1708,7 @@ function onMouseMove(event) {
             item.scale.set(1, 1, 1);
         });
         hideItemTooltip();
+        hideNavSidebar();
 
         if (intersects.length > 0) {
             let hoveredItem = intersects[0].object;
@@ -1678,6 +1721,9 @@ function onMouseMove(event) {
                 renderer.domElement.style.cursor = 'pointer';
                 if (hoveredItem.userData.hoverMessage) {
                     showItemTooltip(hoveredItem.userData.hoverMessage, event.clientX, event.clientY);
+                }
+                if (hoveredItem.userData.navLabel) {
+                    showNavSidebar(hoveredItem.userData.navLabel);
                 }
             }
         } else {
