@@ -14,6 +14,7 @@ html {
     scroll-snap-type: y mandatory;
     scroll-padding-top: var(--header-height);
     background-color: var(--page-bg);
+    overflow-x: hidden;
 }
 
 html:has(body.content-page) {
@@ -23,6 +24,8 @@ html:has(body.content-page) {
 body {
     background-color: var(--page-bg);
     font-family: var(--font-sans);
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body > header {
@@ -119,8 +122,9 @@ body > header {
 }
 
 .greeting-text h1 {
-    font-size: 4rem;
+    font-size: clamp(2rem, 6vw, 4rem);
     margin-bottom: 1.5rem;
+    line-height: 1.1;
 }
 
 .greeting-text p {
@@ -764,59 +768,170 @@ html:has(.content-page) {
     color: var(--timeline-ink);
 }
 
+@media screen and (max-width: 1024px) {
+    .greeting {
+        padding: 2rem 2.5rem;
+    }
+
+    .greeting-text {
+        padding: 0 1rem;
+    }
+
+    .rinrada-pic {
+        padding: 0 1rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
+    :root {
+        --header-height: 96px;
+    }
+
+    body > header {
+        height: auto;
+        min-height: 56px;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .top-bar {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.65rem;
+        white-space: normal;
+    }
+
+    .site-title {
+        font-size: 1.35rem;
+    }
+
+    .top-bar-contents {
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.45rem 0.85rem;
+    }
+
+    .top-bar-contents a,
+    .top-bar-contents span {
+        font-size: 0.78rem;
+    }
+
     .greeting {
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
         text-align: center;
         justify-content: center;
-        padding: 1rem;
+        padding: 1.5rem 1.25rem;
+        gap: 1.5rem;
+        height: auto;
+        min-height: calc(100svh - 96px);
     }
+
     .greeting-text {
         max-width: 100%;
-        padding-left: 0;
+        padding: 0;
+        width: 100%;
     }
+
+    .greeting-text p {
+        font-size: 1rem;
+    }
+
     .greeting-actions {
         justify-content: center;
     }
+
+    .greeting-btn {
+        font-size: 0.9rem;
+        padding: 0.65rem 1.1rem;
+    }
+
     .rinrada-pic {
         width: 100%;
+        max-width: 280px;
         padding: 0;
     }
 
-    .greeting,
-    .whoru,
-    .table-stage,
-    .timeline-section {
-        min-height: calc(100svh - var(--header-height));
+    .rinrada-pic img {
+        max-width: 100%;
+    }
+
+    .whoru {
         height: auto;
+        min-height: calc(100svh - 96px);
+        padding: 2rem 1.25rem;
     }
 
-    .greeting,
-    .whoru,
+    .whoru-text {
+        padding: 0;
+    }
+
     .table-stage {
-        height: calc(100svh - var(--header-height));
+        height: auto;
+        min-height: calc(100svh - 96px);
+        padding: 0.5rem 0.75rem 1rem;
+        overflow: visible;
     }
 
-    .project-window {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
+    #table-container {
+        min-height: calc(100svh - 120px);
     }
 
-    .projects-page {
-        padding: 2rem 1.25rem 3rem;
+    #table-controls {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+    }
+
+    #table-controls button {
+        font-size: 0.8rem;
+        padding: 7px 10px;
+    }
+
+    .table-nav-sidebar {
+        top: 12px;
+        bottom: auto;
+        right: 10px;
+        left: auto;
+        width: min(148px, calc(100% - 20px));
+        transform: translateY(-8px);
+    }
+
+    .table-nav-sidebar.is-visible {
+        transform: translateY(0);
+    }
+
+    .table-nav-sidebar-list li a {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.5rem;
+    }
+
+    .timeline-section {
+        min-height: auto;
+        padding: 3rem 1.25rem 4rem;
+    }
+
+    .timeline-intro {
+        padding-bottom: 2rem;
+    }
+
+    .timeline-items {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .timeline-items::before {
-        left: 32px;
+        left: 28px;
         transform: none;
     }
 
     .timeline-item {
-        grid-template-columns: 64px 1fr;
-        column-gap: 1rem;
-        padding: 1rem 0;
+        grid-template-columns: 56px 1fr;
+        column-gap: 0.85rem;
+        padding: 0.85rem 0;
     }
 
     .timeline-item:nth-child(odd) .timeline-card,
@@ -836,20 +951,93 @@ html:has(.content-page) {
     }
 
     .timeline-icon {
-        width: 56px;
-        height: 56px;
+        width: 48px;
+        height: 48px;
+        font-size: 0.8rem;
+        border-width: 3px;
+    }
+
+    .timeline-card {
+        padding: 1rem;
+    }
+
+    .about-me {
+        padding: 2rem 1.25rem 1rem;
+    }
+
+    .about-me h1 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+
+    .about-me p {
+        font-size: 1rem;
+    }
+
+    .about-photo {
+        padding: 1rem 1.25rem 2rem;
+    }
+
+    .about-photo-img {
+        max-width: min(100%, 320px);
+    }
+
+    .project-window {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding-bottom: 2rem;
+    }
+
+    .projects-page {
+        padding: 2rem 1.25rem 3rem;
+    }
+
+    .projects-intro {
+        margin-bottom: 2rem;
+    }
+
+    .project-title {
+        font-size: 1.3rem;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+    }
+
+    footer {
+        padding: 1.25rem 1rem;
         font-size: 0.9rem;
     }
+}
 
-    .table-nav-sidebar {
-        top: auto;
-        bottom: 72px;
-        right: 12px;
-        width: 140px;
-        transform: translateY(8px);
+@media screen and (max-width: 480px) {
+    .top-bar-contents {
+        gap: 0.4rem 0.65rem;
     }
 
-    .table-nav-sidebar.is-visible {
-        transform: translateY(0);
+    .top-bar-contents a,
+    .top-bar-contents span {
+        font-size: 0.72rem;
+    }
+
+    .greeting-text h1 {
+        font-size: clamp(1.75rem, 9vw, 2.25rem);
+    }
+
+    .greeting-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .greeting-btn {
+        width: 100%;
+    }
+
+    .whoru-text h1 {
+        font-size: clamp(1.75rem, 8vw, 2.75rem);
+    }
+
+    #item-tooltip {
+        max-width: min(240px, calc(100vw - 2rem));
     }
 }
